@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-cd-youth"
+version = "1.0.2"
+description = "MCP Server (SSE) to fetch and parse Chengdu Youth Center activities"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "fsyj123", email = "ycffsyj@gmail.com" }]
+keywords = ["mcp", "model context protocol", "sse", "chengdu", "youth", "活动"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "License :: OSI Approved :: MIT License"
+]
+
+dependencies = [
+  "mcp[cli]>=1.2.0",
+  "httpx>=0.26",
+  "beautifulsoup4>=4.12",
+  "lxml>=5.0",
+  "starlette>=0.37",
+  "uvicorn>=0.29",
+  "pydantic>=2.7"
+]
+
+[project.scripts]
+mcp-cd-youth = "mcp_cd_youth.server:main"
+
+# 建议显式指定要打进 wheel 的包目录（非 src/ 布局时更稳）
+[tool.hatch.build.targets.wheel]
+packages = ["mcp_cd_youth"]
+
+[tool.hatch.build.targets.sdist]
+include = ["mcp_cd_youth", "README.md", "LICENSE"]

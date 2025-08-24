@@ -1,0 +1,4 @@
+.venv
+dist
+*.pyc
+mcp_cd_youth.egg-info
